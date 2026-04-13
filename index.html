@@ -11,14 +11,12 @@
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f3f4f6;
-            /* Mencegah text selection untuk perlindungan tambahan */
             -webkit-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
             user-select: none;
         }
-        /* Mengizinkan text selection hanya pada input form agar tetap bisa diketik */
-        input {
+        input, select {
             -webkit-user-select: text;
             -moz-user-select: text;
             -ms-user-select: text;
@@ -28,43 +26,41 @@
 </head>
 <body class="min-h-screen flex items-center justify-center p-4">
 
-    <!-- Main Application -->
-    <div id="appScreen" class="bg-white rounded-2xl shadow-xl w-full max-w-md overflow-hidden">
-        <!-- Header -->
-        <div class="bg-blue-600 p-6 text-white flex justify-between items-start">
-            <div>
-                <h1 class="text-2xl font-bold flex items-center gap-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calculator"><rect width="16" height="20" x="4" y="2" rx="2"/><line x1="8" x2="16" y1="6" y2="6"/><line x1="16" x2="16.01" y1="14" y2="14"/><line x1="16" x2="16.01" y1="18" y2="18"/><line x1="16" x2="16.01" y1="10" y2="10"/><line x1="12" x2="12.01" y1="14" y2="14"/><line x1="12" x2="12.01" y1="18" y2="18"/><line x1="12" x2="12.01" y1="10" y2="10"/><line x1="8" x2="8.01" y1="14" y2="14"/><line x1="8" x2="8.01" y1="18" y2="18"/><line x1="8" x2="8.01" y1="10" y2="10"/></svg>
-                    Sistem Hitung Terpal
-                </h1>
-                <p class="text-blue-100 text-sm mt-1">Kalkulasi biaya otomatis untuk Mahkota Terpal.</p>
-            </div>
+    <div id="appScreen" class="bg-white rounded-2xl shadow-xl w-full max-w-md overflow-hidden my-4">
+        <div class="bg-blue-600 p-6 text-white">
+            <h1 class="text-2xl font-bold flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calculator"><rect width="16" height="20" x="4" y="2" rx="2"/><line x1="8" x2="16" y1="6" y2="6"/><line x1="16" x2="16.01" y1="14" y2="14"/><line x1="16" x2="16.01" y1="18" y2="18"/><line x1="16" x2="16.01" y1="10" y2="10"/><line x1="12" x2="12.01" y1="14" y2="14"/><line x1="12" x2="12.01" y1="18" y2="18"/><line x1="12" x2="12.01" y1="10" y2="10"/><line x1="8" x2="8.01" y1="14" y2="14"/><line x1="8" x2="8.01" y1="18" y2="18"/><line x1="8" x2="8.01" y1="10" y2="10"/></svg>
+                Sistem Hitung Terpal
+            </h1>
+            <p class="text-blue-100 text-sm mt-1">Kalkulasi biaya otomatis semua jenis terpal.</p>
         </div>
 
         <div class="p-6">
-            <!-- Pilihan Kategori -->
-            <div class="flex bg-gray-100 p-1 rounded-lg mb-6 text-center">
-                <button id="btnLembaran" onclick="setKategori('lembaran')" class="flex-1 py-2 px-2 rounded-md text-sm font-semibold bg-white text-blue-600 shadow-sm transition-all">
+            <div class="flex bg-gray-100 p-1 rounded-lg mb-6 text-center text-xs sm:text-sm">
+                <button id="btnLembaran" onclick="setKategori('lembaran')" class="flex-1 py-2 px-1 rounded-md font-semibold bg-white text-blue-600 shadow-sm transition-all">
                     Lembaran
                 </button>
-                <button id="btnKotak" onclick="setKategori('kotak')" class="flex-1 py-2 px-2 rounded-md text-sm font-semibold text-gray-500 hover:text-gray-700 transition-all">
+                <button id="btnKotak" onclick="setKategori('kotak')" class="flex-1 py-2 px-1 rounded-md font-semibold text-gray-500 hover:text-gray-700 transition-all">
                     Kotak
                 </button>
-                <button id="btnBulat" onclick="setKategori('bulat')" class="flex-1 py-2 px-2 rounded-md text-sm font-semibold text-gray-500 hover:text-gray-700 transition-all">
+                <button id="btnBulat" onclick="setKategori('bulat')" class="flex-1 py-2 px-1 rounded-md font-semibold text-gray-500 hover:text-gray-700 transition-all">
                     Bulat
                 </button>
-                <button id="btnFullset" onclick="setKategori('fullset')" class="flex-1 py-2 px-2 rounded-md text-sm font-semibold text-gray-500 hover:text-gray-700 transition-all">
+                <button id="btnFullset" onclick="setKategori('fullset')" class="flex-1 py-2 px-1 rounded-md font-semibold text-gray-500 hover:text-gray-700 transition-all">
                     Fullset
                 </button>
             </div>
 
-            <!-- Input Form -->
             <div class="space-y-4">
                 <div id="jenisTerpalContainer" class="hidden">
                     <label for="jenisTerpal" class="block text-sm font-medium text-gray-700 mb-1">Jenis Terpal</label>
                     <select id="jenisTerpal" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all bg-white">
+                        <option value="A3">Tipe A3</option>
                         <option value="A5">Tipe A5</option>
+                        <option value="A8">Tipe A8</option>
+                        <option value="A10">Tipe A10</option>
                         <option value="A12">Tipe A12</option>
+                        <option value="A15">Tipe A15</option>
                         <option value="A20">Tipe A20</option>
                         <option value="Orchid">Tipe Orchid</option>
                     </select>
@@ -118,60 +114,21 @@
                 </button>
             </div>
 
-            <!-- Error Message -->
             <div id="errorMessage" class="hidden mt-4 p-3 bg-red-50 text-red-600 rounded-lg text-sm flex items-center gap-2">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg>
                 <span id="errorText">Mohon lengkapi semua ukuran dengan valid.</span>
             </div>
 
-            <!-- Results Section -->
             <div id="hasilContainer" class="hidden mt-6">
                 <div class="border-t border-gray-200 pt-4 mb-4">
                     <h2 class="text-lg font-bold text-gray-800">Hasil Estimasi Biaya</h2>
                     <p class="text-sm text-gray-500" id="infoLuas">Luas: 0 m²</p>
-                    <p class="text-sm text-blue-600 font-medium mt-1">+ Termasuk Biaya Tambahan: Rp 200.000</p>
                 </div>
 
-                <div class="space-y-3">
-                    <!-- A5 -->
-                    <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg border border-gray-100">
-                        <div>
-                            <p class="font-semibold text-gray-800">Tipe A5</p>
-                            <p class="text-xs text-gray-500" id="labelHargaA5">Rp 6.000 / m²</p>
-                        </div>
-                        <p class="font-bold text-blue-600 text-lg" id="hasilA5">Rp 0</p>
+                <div id="daftarHasilBiasa" class="space-y-3">
                     </div>
-
-                    <!-- A12 -->
-                    <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg border border-gray-100">
-                        <div>
-                            <p class="font-semibold text-gray-800">Tipe A12</p>
-                            <p class="text-xs text-gray-500" id="labelHargaA12">Rp 9.000 / m²</p>
-                        </div>
-                        <p class="font-bold text-blue-600 text-lg" id="hasilA12">Rp 0</p>
-                    </div>
-
-                    <!-- A20 -->
-                    <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg border border-gray-100">
-                        <div>
-                            <p class="font-semibold text-gray-800">Tipe A20</p>
-                            <p class="text-xs text-gray-500" id="labelHargaA20">Rp 11.000 / m²</p>
-                        </div>
-                        <p class="font-bold text-blue-600 text-lg" id="hasilA20">Rp 0</p>
-                    </div>
-
-                    <!-- Orchid -->
-                    <div class="flex justify-between items-center p-3 bg-amber-50 rounded-lg border border-amber-100">
-                        <div>
-                            <p class="font-semibold text-amber-900">Tipe Orchid</p>
-                            <p class="text-xs text-amber-700" id="labelHargaOrchid">Rp 23.000 / m²</p>
-                        </div>
-                        <p class="font-bold text-amber-600 text-lg" id="hasilOrchid">Rp 0</p>
-                    </div>
-                </div>
             </div>
 
-            <!-- Results Section Fullset -->
             <div id="hasilFullsetContainer" class="hidden mt-6">
                 <div class="border-t border-gray-200 pt-4 mb-4">
                     <h2 class="text-lg font-bold text-gray-800">Hasil Estimasi Fullset</h2>
@@ -200,167 +157,102 @@
 
     <script>
         // --- SISTEM PROTEKSI SOURCE CODE ---
-        // 1. Menonaktifkan Klik Kanan (Context Menu)
-        document.addEventListener('contextmenu', function(e) {
-            e.preventDefault();
-        });
-
-        // 2. Menonaktifkan Shortcut Keyboard tertentu
-        document.addEventListener('keydown', function(e) {
-            // F12 (Developer Tools)
-            if (e.key === 'F12' || e.keyCode === 123) {
-                e.preventDefault();
-                return false;
-            }
-            // Ctrl+Shift+I (Inspect Element Chrome/Firefox)
-            if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.keyCode === 73)) {
-                e.preventDefault();
-                return false;
-            }
-            // Ctrl+Shift+J (Console Chrome)
-            if (e.ctrlKey && e.shiftKey && (e.key === 'J' || e.key === 'j' || e.keyCode === 74)) {
-                e.preventDefault();
-                return false;
-            }
-            // Ctrl+Shift+C (Inspect Element)
-            if (e.ctrlKey && e.shiftKey && (e.key === 'C' || e.key === 'c' || e.keyCode === 67)) {
-                e.preventDefault();
-                return false;
-            }
-            // Ctrl+U (View Page Source)
-            if (e.ctrlKey && (e.key === 'U' || e.key === 'u' || e.keyCode === 85)) {
-                e.preventDefault();
-                return false;
-            }
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        document.addEventListener('keydown', e => {
+            if (e.key === 'F12' || e.keyCode === 123) return e.preventDefault(), false;
+            if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.keyCode === 73)) return e.preventDefault(), false;
+            if (e.ctrlKey && e.shiftKey && (e.key === 'J' || e.key === 'j' || e.keyCode === 74)) return e.preventDefault(), false;
+            if (e.ctrlKey && e.shiftKey && (e.key === 'C' || e.key === 'c' || e.keyCode === 67)) return e.preventDefault(), false;
+            if (e.ctrlKey && (e.key === 'U' || e.key === 'u' || e.keyCode === 85)) return e.preventDefault(), false;
         });
         // --- END SISTEM PROTEKSI ---
 
         // State Kategori Saat Ini
-        let kategoriAktif = 'lembaran'; // Default
+        let kategoriAktif = 'lembaran';
 
-        // Database Harga per meter persegi
+        // Database Harga per meter persegi (REVISI TERBARU)
         const hargaTipe = {
-            lembaran: {
-                A5: 6000,
-                A12: 9000,
-                A20: 11000,
-                Orchid: 23000
-            },
-            kotak: {
-                A5: 7000,
-                A12: 10000,
-                A20: 12000,
-                Orchid: 25000
-            },
-            bulat: {
-                A5: 7000,
-                A12: 10000,
-                A20: 12000,
-                Orchid: 25000
-            },
-            fullset: {
-                A5: 7000,
-                A12: 10000,
-                A20: 12000,
-                Orchid: 25000
-            }
+            lembaran: { A3: 7500, A5: 8000, A8: 9500, A10: 11000, A12: 11000, A15: 12000, A20: 13000, Orchid: 33000 },
+            kotak: { A3: 8500, A5: 9000, A8: 10500, A10: 12000, A12: 12000, A15: 13000, A20: 14000, Orchid: 35000 },
+            bulat: { A3: 8500, A5: 9000, A8: 10500, A10: 12000, A12: 12000, A15: 13000, A20: 14000, Orchid: 35000 },
+            fullset: { A3: 8500, A5: 9000, A8: 10500, A10: 12000, A12: 12000, A15: 13000, A20: 14000, Orchid: 35000 }
         };
 
         // Format angka ke format mata uang Rupiah
         const formatRupiah = (angka) => {
-            return new Intl.NumberFormat('id-ID', {
-                style: 'currency',
-                currency: 'IDR',
-                minimumFractionDigits: 0,
-                maximumFractionDigits: 0
-            }).format(angka);
+            return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(angka);
         };
+
+        // Render UI List Hasil agar rapi
+        function renderListHasil(kategori) {
+            const container = document.getElementById('daftarHasilBiasa');
+            container.innerHTML = ''; // Bersihkan dulu
+            
+            const listTipe = ['A3', 'A5', 'A8', 'A10', 'A12', 'A15', 'A20', 'Orchid'];
+            
+            listTipe.forEach(tipe => {
+                let colorClass = tipe === 'Orchid' ? 'bg-amber-50 border-amber-100 text-amber-900' : 'bg-gray-50 border-gray-100 text-gray-800';
+                let priceClass = tipe === 'Orchid' ? 'text-amber-600' : 'text-blue-600';
+                
+                let html = `
+                    <div class="flex justify-between items-center p-3 rounded-lg border ${colorClass}">
+                        <div>
+                            <p class="font-semibold text-base">Tipe ${tipe}</p>
+                        </div>
+                        <p class="font-bold text-lg ${priceClass}" id="hasil${tipe}">Rp 0</p>
+                    </div>
+                `;
+                container.innerHTML += html;
+            });
+        }
 
         // Fungsi mengubah kategori
         function setKategori(kategori) {
             kategoriAktif = kategori;
             
-            const btnLembaran = document.getElementById('btnLembaran');
-            const btnKotak = document.getElementById('btnKotak');
-            const btnBulat = document.getElementById('btnBulat');
-            const btnFullset = document.getElementById('btnFullset');
-            
-            const panjangContainer = document.getElementById('panjangContainer');
-            const lebarContainer = document.getElementById('lebarContainer');
-            const tinggiContainer = document.getElementById('tinggiContainer');
-            const diameterContainer = document.getElementById('diameterContainer');
-            const jenisTerpalContainer = document.getElementById('jenisTerpalContainer');
-            const tinggiFullsetContainer = document.getElementById('tinggiFullsetContainer');
-            
-            const hasilContainer = document.getElementById('hasilContainer');
-            const hasilFullsetContainer = document.getElementById('hasilFullsetContainer');
-            
-            // Sembunyikan hasil perhitungan sebelumnya
-            hasilContainer.classList.add('hidden');
-            hasilFullsetContainer.classList.add('hidden');
+            const buttons = ['btnLembaran', 'btnKotak', 'btnBulat', 'btnFullset'];
+            const containers = {
+                panjangContainer: ['lembaran', 'kotak'],
+                lebarContainer: ['lembaran', 'kotak'],
+                tinggiContainer: ['kotak', 'bulat'],
+                diameterContainer: ['bulat', 'fullset'],
+                jenisTerpalContainer: ['fullset'],
+                tinggiFullsetContainer: ['fullset']
+            };
+
+            // Reset UI
+            document.getElementById('hasilContainer').classList.add('hidden');
+            document.getElementById('hasilFullsetContainer').classList.add('hidden');
             document.getElementById('errorMessage').classList.add('hidden');
 
-            // Reset semua tombol ke style default (tidak aktif)
-            const defaultBtnClass = 'flex-1 py-2 px-2 rounded-md text-sm font-semibold text-gray-500 hover:text-gray-700 transition-all';
-            btnLembaran.className = defaultBtnClass;
-            btnKotak.className = defaultBtnClass;
-            btnBulat.className = defaultBtnClass;
-            btnFullset.className = defaultBtnClass;
+            // Set Tombol Aktif
+            buttons.forEach(id => {
+                let isAktif = id.toLowerCase().includes(kategori);
+                document.getElementById(id).className = isAktif 
+                    ? 'flex-1 py-2 px-1 rounded-md text-sm font-semibold bg-white text-blue-600 shadow-sm transition-all'
+                    : 'flex-1 py-2 px-1 rounded-md text-sm font-semibold text-gray-500 hover:text-gray-700 transition-all';
+            });
 
-            const activeBtnClass = 'flex-1 py-2 px-2 rounded-md text-sm font-semibold bg-white text-blue-600 shadow-sm transition-all';
-
-            // Ubah tampilan Tab (Tombol Aktif/Tidak) & Tampilkan Input yang sesuai
-            if (kategori === 'lembaran') {
-                btnLembaran.className = activeBtnClass;
-                panjangContainer.classList.remove('hidden');
-                lebarContainer.classList.remove('hidden');
-                tinggiContainer.classList.add('hidden');
-                diameterContainer.classList.add('hidden');
-                jenisTerpalContainer.classList.add('hidden');
-                tinggiFullsetContainer.classList.add('hidden');
-            } else if (kategori === 'kotak') {
-                btnKotak.className = activeBtnClass;
-                panjangContainer.classList.remove('hidden');
-                lebarContainer.classList.remove('hidden');
-                tinggiContainer.classList.remove('hidden');
-                diameterContainer.classList.add('hidden');
-                jenisTerpalContainer.classList.add('hidden');
-                tinggiFullsetContainer.classList.add('hidden');
-            } else if (kategori === 'bulat') {
-                btnBulat.className = activeBtnClass;
-                panjangContainer.classList.add('hidden');
-                lebarContainer.classList.add('hidden');
-                tinggiContainer.classList.remove('hidden');
-                diameterContainer.classList.remove('hidden');
-                jenisTerpalContainer.classList.add('hidden');
-                tinggiFullsetContainer.classList.add('hidden');
-            } else if (kategori === 'fullset') {
-                btnFullset.className = activeBtnClass;
-                panjangContainer.classList.add('hidden');
-                lebarContainer.classList.add('hidden');
-                tinggiContainer.classList.add('hidden');
-                diameterContainer.classList.remove('hidden');
-                jenisTerpalContainer.classList.remove('hidden');
-                tinggiFullsetContainer.classList.remove('hidden');
+            // Set Tampilan Input
+            for (const [id, showIn] of Object.entries(containers)) {
+                if (showIn.includes(kategori)) {
+                    document.getElementById(id).classList.remove('hidden');
+                } else {
+                    document.getElementById(id).classList.add('hidden');
+                }
             }
 
-            // Update Label Harga di Bawah berdasarkan Kategori (hanya jika bukan fullset)
+            // Render ulang list harga jika bukan fullset
             if (kategori !== 'fullset') {
-                document.getElementById('labelHargaA5').textContent = formatRupiah(hargaTipe[kategoriAktif].A5) + ' / m²';
-                document.getElementById('labelHargaA12').textContent = formatRupiah(hargaTipe[kategoriAktif].A12) + ' / m²';
-                document.getElementById('labelHargaA20').textContent = formatRupiah(hargaTipe[kategoriAktif].A20) + ' / m²';
-                document.getElementById('labelHargaOrchid').textContent = formatRupiah(hargaTipe[kategoriAktif].Orchid) + ' / m²';
+                renderListHasil(kategoriAktif);
             }
         }
 
         function hitungBiaya() {
-            // Ambil nilai dari input
             const panjang = parseFloat(document.getElementById('panjang').value);
             const lebar = parseFloat(document.getElementById('lebar').value);
             const tinggi = parseFloat(document.getElementById('tinggi').value);
             const diameter = parseFloat(document.getElementById('diameter').value);
-
-            // Input khusus fullset
             const jenisTerpal = document.getElementById('jenisTerpal').value;
             const tinggiFullset = parseFloat(document.getElementById('tinggiFullset').value);
 
@@ -369,37 +261,20 @@
             const hasilFullsetContainer = document.getElementById('hasilFullsetContainer');
 
             // Validasi Input
-            if (kategoriAktif === 'lembaran') {
-                if (isNaN(panjang) || isNaN(lebar) || panjang <= 0 || lebar <= 0) {
-                    errorMessage.classList.remove('hidden');
-                    hasilContainer.classList.add('hidden');
-                    return;
-                }
-            } else if (kategoriAktif === 'kotak') {
-                if (isNaN(panjang) || isNaN(lebar) || isNaN(tinggi) || panjang <= 0 || lebar <= 0 || tinggi <= 0) {
-                    errorMessage.classList.remove('hidden');
-                    hasilContainer.classList.add('hidden');
-                    return;
-                }
-            } else if (kategoriAktif === 'bulat') {
-                if (isNaN(diameter) || isNaN(tinggi) || diameter <= 0 || tinggi <= 0) {
-                    errorMessage.classList.remove('hidden');
-                    hasilContainer.classList.add('hidden');
-                    return;
-                }
-            } else if (kategoriAktif === 'fullset') {
-                if (isNaN(diameter) || diameter <= 0) {
-                    errorMessage.classList.remove('hidden');
-                    hasilFullsetContainer.classList.add('hidden');
-                    return;
-                }
+            if (kategoriAktif === 'lembaran' && (isNaN(panjang) || isNaN(lebar) || panjang <= 0 || lebar <= 0)) return showError();
+            if (kategoriAktif === 'kotak' && (isNaN(panjang) || isNaN(lebar) || isNaN(tinggi) || panjang <= 0 || lebar <= 0 || tinggi <= 0)) return showError();
+            if (kategoriAktif === 'bulat' && (isNaN(diameter) || isNaN(tinggi) || diameter <= 0 || tinggi <= 0)) return showError();
+            if (kategoriAktif === 'fullset' && (isNaN(diameter) || diameter <= 0)) return showError();
+
+            function showError() {
+                errorMessage.classList.remove('hidden');
+                hasilContainer.classList.add('hidden');
+                hasilFullsetContainer.classList.add('hidden');
             }
 
-            // Sembunyikan error jika input valid
             errorMessage.classList.add('hidden');
 
             if (kategoriAktif === 'fullset') {
-                // --- PERHITUNGAN FULLSET ---
                 const D = diameter;
                 const t = tinggiFullset;
                 
@@ -407,7 +282,7 @@
                 const luasTerpal = (3.14 * D * (t + 0.05)) + (D * D);
                 const biayaTerpal = luasTerpal * hargaTipe.fullset[jenisTerpal];
 
-                // Harga Rangka (Berdasarkan tinggi)
+                // Harga Rangka
                 let hargaRangkaPerMeter = 0;
                 if (t === 0.45) hargaRangkaPerMeter = 37000;
                 else if (t === 0.60) hargaRangkaPerMeter = 40000;
@@ -415,42 +290,17 @@
                 else if (t === 1.20) hargaRangkaPerMeter = 49000;
                 
                 const biayaRangka = 3.14 * D * hargaRangkaPerMeter;
-
-                // Harga Talang
                 const biayaTalang = 3.14 * D * 14000;
 
-                // Harga Saringan
-                let biayaSaringan = 0;
-                if (D <= 2) {
-                    biayaSaringan = 20000; // Pipa 2 Inch
-                } else if (D <= 4) {
-                    biayaSaringan = 25000; // Pipa 2.5 Inch
-                } else {
-                    biayaSaringan = 30000; // Pipa 3 Inch
-                }
-
-                // Kebutuhan Pipa
+                let biayaSaringan = D <= 2 ? 20000 : (D <= 4 ? 25000 : 30000);
                 const butuhPipa = (D / 2 * 100) + 30;
-
-                // Harga Pipa
-                let biayaPipa = 0;
-                if (D <= 2) {
-                    biayaPipa = butuhPipa * (35000 / 400);
-                } else if (D <= 4) {
-                    biayaPipa = butuhPipa * (50000 / 400);
-                } else {
-                    biayaPipa = butuhPipa * (70000 / 400);
-                }
-
-                // Harga Lainnya
+                let biayaPipa = D <= 2 ? butuhPipa * (35000 / 400) : (D <= 4 ? butuhPipa * (50000 / 400) : butuhPipa * (70000 / 400));
+                
                 const biayaKnee = 25000;
                 const biayaTaliSelangKlem = 50000;
                 const biayaUp = 200000;
-
-                // Total Keseluruhan
                 const totalFullset = biayaTerpal + biayaRangka + biayaTalang + biayaSaringan + biayaPipa + biayaKnee + biayaTaliSelangKlem + biayaUp;
 
-                // Update UI Fullset
                 document.getElementById('infoFullset').textContent = `Tipe: ${jenisTerpal} | Diameter: ${D}m | Tinggi: ${t}m`;
                 document.getElementById('rincianTerpal').textContent = formatRupiah(biayaTerpal);
                 document.getElementById('rincianRangka').textContent = formatRupiah(biayaRangka);
@@ -459,71 +309,56 @@
                 document.getElementById('rincianPipa').textContent = formatRupiah(biayaPipa);
                 document.getElementById('rincianKnee').textContent = formatRupiah(biayaKnee);
                 document.getElementById('rincianLain').textContent = formatRupiah(biayaTaliSelangKlem + biayaUp);
-                
                 document.getElementById('hasilTotalFullset').textContent = formatRupiah(totalFullset);
 
                 hasilFullsetContainer.classList.remove('hidden');
-                hasilContainer.classList.add('hidden'); // Sembunyikan hasil biasa
+                hasilContainer.classList.add('hidden');
                 return;
             }
 
-            // --- PERHITUNGAN BIASA (Lembaran, Kotak, Bulat) ---
-            // Variabel untuk menyimpan luasan (tergantung rumus mana yang dipakai)
+            // --- PERHITUNGAN BIASA ---
             let luas = 0;
             let textInfo = '';
 
-            // Perhitungan Luas berdasarkan kategori
             if (kategoriAktif === 'lembaran') {
                 luas = panjang * lebar;
                 textInfo = `Total Luas: ${luas.toFixed(2)} m² (P: ${panjang}m x L: ${lebar}m)`;
             } else if (kategoriAktif === 'kotak') {
-                // Rumus Kotak: (( 2p + 2l ) x ( t + 0.05 )) + ( p x l)
-                const keliling = (2 * panjang) + (2 * lebar);
-                const tinggiPlus = tinggi + 0.05;
-                const luasDinding = keliling * tinggiPlus;
-                const luasAlas = panjang * lebar;
-                
-                luas = luasDinding + luasAlas;
+                luas = ((2 * panjang) + (2 * lebar)) * (tinggi + 0.05) + (panjang * lebar);
                 textInfo = `Total Luasan: ${luas.toFixed(2)} m² (P: ${panjang}m, L: ${lebar}m, T: ${tinggi}m)`;
             } else if (kategoriAktif === 'bulat') {
-                // Rumus Bulat: (3.14 x D x ( t+0.05) )+ (DxD)
                 luas = (3.14 * diameter * (tinggi + 0.05)) + (diameter * diameter);
                 textInfo = `Total Luasan: ${luas.toFixed(2)} m² (D: ${diameter}m, T: ${tinggi}m)`;
             }
 
-            // Ambil database harga sesuai kategori aktif (Lembaran / Kotak / Bulat)
             const harga = hargaTipe[kategoriAktif];
-
-            // Biaya tambahan wajib
             const biayaTambahan = 200000;
 
-            // Hitung total harga masing-masing tipe (+ biaya tambahan 200.000)
-            const totalA5 = (luas * harga.A5) + biayaTambahan;
-            const totalA12 = (luas * harga.A12) + biayaTambahan;
-            const totalA20 = (luas * harga.A20) + biayaTambahan;
-            const totalOrchid = (luas * harga.Orchid) + biayaTambahan;
-
-            // Update UI dengan hasil
             document.getElementById('infoLuas').textContent = textInfo;
             
-            document.getElementById('hasilA5').textContent = formatRupiah(totalA5);
-            document.getElementById('hasilA12').textContent = formatRupiah(totalA12);
-            document.getElementById('hasilA20').textContent = formatRupiah(totalA20);
-            document.getElementById('hasilOrchid').textContent = formatRupiah(totalOrchid);
+            const listTipe = ['A3', 'A5', 'A8', 'A10', 'A12', 'A15', 'A20', 'Orchid'];
+            listTipe.forEach(tipe => {
+                let total = (luas * harga[tipe]) + biayaTambahan;
+                
+                // Tambahan khusus untuk tipe Orchid
+                if (tipe === 'Orchid') {
+                    total += 50000;
+                }
 
-            // Tampilkan container hasil
+                // Pastikan elemen sudah dirender sebelum diisi
+                const el = document.getElementById(`hasil${tipe}`);
+                if(el) el.textContent = formatRupiah(total);
+            });
+
             hasilContainer.classList.remove('hidden');
         }
 
-        // Tambahkan event listener agar bisa menekan tombol Enter di dalam input
         const inputs = ['panjang', 'lebar', 'tinggi', 'diameter'];
         inputs.forEach(id => {
-            document.getElementById(id).addEventListener('keypress', function (e) {
-                if (e.key === 'Enter') hitungBiaya();
-            });
+            document.getElementById(id).addEventListener('keypress', e => { if (e.key === 'Enter') hitungBiaya(); });
         });
 
-        // Set inisialisasi awal saat pertama load
+        // Inisialisasi
         setKategori('lembaran');
     </script>
 </body>
